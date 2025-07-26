@@ -129,7 +129,7 @@ Contact forms use Web3Forms:
 
 For support or questions:
 - **Email**: exdev.contact@gmail.com
-- **Phone**: +91 7020560284, +91 9145226443
+- **Phone**: +91 7020560284, +91 9156226443
 - **Location**: Pune, Maharashtra, India
 
 ## 📄 License
