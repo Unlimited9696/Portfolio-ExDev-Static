@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://unlimited9696.github.io/Portfolio-ExDev-Static/sitemap.xml
+
+# Allow all search engines to crawl
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Disallow crawling of service worker and manifest files
+Disallow: /service-worker.js
+Disallow: /site.webmanifest
+
+# Allow crawling of all other files
+Allow: /*.html
+Allow: /*.css
+Allow: /*.js
+Allow: /public/
+Allow: /images/ 

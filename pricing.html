@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development Plans & Pricing</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Inline styles for new components, can be moved to style.css */
+    .pricing-section { max-width: 1100px; margin: 2rem auto; padding: 1rem; }
+    .pricing-toggle { display: flex; justify-content: flex-end; margin-bottom: 1rem; }
+    .toggle-btn { background: #eee; border: none; padding: 0.5rem 1rem; margin-left: 0.5rem; cursor: pointer; border-radius: 20px; font-weight: bold; }
+    .toggle-btn.active { background: #007bff; color: #fff; }
+    .pricing-table { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
+    .plan-card { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 2rem 1.5rem; flex: 1 1 300px; max-width: 340px; position: relative; transition: box-shadow 0.2s; }
+    .plan-card.recommended { border: 2px solid #007bff; }
+    .badge { position: absolute; top: 1rem; right: 1rem; background: #007bff; color: #fff; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.9rem; font-weight: bold; }
+    .plan-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem; }
+    .plan-price { font-size: 1.2rem; color: #007bff; margin-bottom: 0.5rem; }
+    .plan-ideal { font-size: 1rem; color: #555; margin-bottom: 1rem; }
+    .plan-features { list-style: none; padding: 0; margin-bottom: 1rem; }
+    .plan-features li { margin-bottom: 0.5rem; }
+    .testimonials, .logos { margin-top: 1rem; }
+    .logos img { height: 32px; margin-right: 0.5rem; }
+    @media (max-width: 900px) { .pricing-table { flex-direction: column; align-items: center; } }
+    .addons-section { background: #f9f9f9; border-radius: 12px; padding: 1.5rem; margin: 2rem 0; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .addons-list { list-style: none; padding: 0; }
+    .addons-list li { margin-bottom: 0.7rem; display: flex; align-items: center; }
+    .addons-list label { flex: 1; cursor: pointer; }
+    .addons-price { font-weight: bold; color: #007bff; margin-left: 0.5rem; }
+    .total-price { font-size: 1.2rem; font-weight: bold; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="pricing-section">
+    <h1>🚀 3-Tier Web Development Plans (2025 Edition)</h1>
+    <div class="pricing-toggle">
+      <span>Highlight:</span>
+      <button class="toggle-btn active" id="toggle-basic">Basic</button>
+      <button class="toggle-btn" id="toggle-premium">Premium</button>
+    </div>
+    <div class="pricing-table">
+      <!-- Basic Plan -->
+      <div class="plan-card" id="plan-basic">
+        <div class="plan-title">Basic Plan</div>
+        <div class="plan-price">₹7,999</div>
+        <div class="plan-ideal">Perfect for: Personal portfolio sites, personal brands, small businesses, static informative sites.</div>
+        <ul class="plan-features">
+          <li>Pages: Up to 5 static pages</li>
+          <li>Responsive Design: Mobile, tablet, and desktop-friendly</li>
+          <li>No Backend / No Database</li>
+          <li>Content Updates: Through developer support only</li>
+          <li>Professional Layout: Clean design aligned with your brand</li>
+          <li>Timeline: 2–3 weeks</li>
+          <li>Option: Add domain & hosting (charges extra)</li>
+        </ul>
+        <div class="plan-bestfor"><strong>Best for:</strong> Personal websites, Informative small business pages, Branding microsites</div>
+        <div class="testimonials">
+          <strong>Testimonials:</strong>
+          <div><em>"Perfect for my startup!"</em> – Client A</div>
+        </div>
+        <div class="logos">
+          <i class="fas fa-rocket" style="font-size: 24px; color: #007bff;"></i>
+          <i class="fas fa-star" style="font-size: 24px; color: #ffc107; margin-left: 10px;"></i>
+        </div>
+      </div>
+      <!-- Standard Plan -->
+      <div class="plan-card recommended" id="plan-standard">
+        <span class="badge">Recommended</span>
+        <div class="plan-title">Standard Plan</div>
+        <div class="plan-price">₹14,999</div>
+        <div class="plan-ideal">Perfect for: Small-to-mid businesses needing dynamic content and admin control.</div>
+        <ul class="plan-features">
+          <li>Pages: Up to 10–15 pages</li>
+          <li>Admin Dashboard: Manage content updates, images, and data</li>
+          <li>Forms & Lead Capture</li>
+          <li>Enquiry Form Management</li>
+          <li>Payment Gateway Integration: Razorpay/Paytm (Optional)</li>
+          <li>Hosting & Domain for 1 Year included</li>
+          <li>Responsive Design</li>
+          <li>Timeline: 4–8 weeks</li>
+          <li>Option: Clone layout of reference website if required</li>
+        </ul>
+        <div class="plan-bestfor"><strong>Best for:</strong> Small e-commerce, Service businesses, Educational consultants, Local retailers</div>
+        <div class="testimonials">
+          <strong>Testimonials:</strong>
+          <div><em>"Our agency grew fast!"</em> – Client B</div>
+        </div>
+        <div class="logos">
+          <i class="fas fa-chart-line" style="font-size: 24px; color: #28a745;"></i>
+          <i class="fas fa-cogs" style="font-size: 24px; color: #007bff; margin-left: 10px;"></i>
+          <i class="fas fa-shield-alt" style="font-size: 24px; color: #ffc107; margin-left: 10px;"></i>
+        </div>
+      </div>
+      <!-- Premium Plan -->
+      <div class="plan-card" id="plan-premium">
+        <div class="plan-title">Premium Plan</div>
+        <div class="plan-price">₹29,999</div>
+        <div class="plan-ideal">Perfect for: High-demand businesses needing custom integrations and advanced digital systems.</div>
+        <ul class="plan-features">
+          <li>Pages & Modules: Unlimited</li>
+          <li>Custom Module Development</li>
+          <li>Complex Data Backup & Encryption</li>
+          <li>External API Integrations (payment, CRM, ERP, etc.)</li>
+          <li>Advanced CRM System Integration</li>
+          <li>Payment Gateway</li>
+          <li>User Authentication, Social Login, Email/OTP Verification</li>
+          <li>Responsive, Modern UI</li>
+          <li>Hosting & Domain for 1 Year</li>
+          <li>Timeline: 8 weeks</li>
+        </ul>
+        <div class="plan-bestfor"><strong>Best for:</strong> Multi-product e-commerce, Enterprise-level business websites, Startups seeking scalable systems</div>
+        <div class="testimonials">
+          <strong>Testimonials:</strong>
+          <div><em>"Enterprise-level quality!"</em> – Client C</div>
+        </div>
+        <div class="logos">
+          <i class="fas fa-crown" style="font-size: 24px; color: #dc3545;"></i>
+          <i class="fas fa-infinity" style="font-size: 24px; color: #6f42c1; margin-left: 10px;"></i>
+          <i class="fas fa-lock" style="font-size: 24px; color: #28a745; margin-left: 10px;"></i>
+          <i class="fas fa-cloud" style="font-size: 24px; color: #17a2b8; margin-left: 10px;"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add-ons & Ongoing Costs -->
+    <div class="addons-section">
+      <h2>📦 Add-On & Ongoing Costs</h2>
+      <form id="addons-form">
+        <ul class="addons-list">
+          <li><label><input type="checkbox" class="addon" data-price="799"> 🌐 Domain Name <span class="addons-price">₹799/year</span></label> <small>(.com, .in, .co.in, etc. rates vary)</small></li>
+          <li><label><input type="checkbox" class="addon" data-price="1499"> 🏠 Shared Hosting <span class="addons-price">₹1,499/year</span></label> <small>(Secure SSD hosting with 99.9% uptime)</small></li>
+          <li><label><input type="checkbox" class="addon" data-price="4999"> 🚀 VPS Hosting <span class="addons-price">₹4,999/year</span></label> <small>(For high-traffic, performance-heavy websites)</small></li>
+          <li><label><input type="checkbox" class="addon" data-price="2999"> 📈 SEO Optimization <span class="addons-price">₹2,999/month</span></label> <small>(On-page SEO setup, Google indexing, meta tags, sitemap)</small></li>
+          <li><label><input type="checkbox" class="addon" data-price="1499"> 🔧 Website Maintenance <span class="addons-price">₹1,499/month</span></label> <small>(Regular backups, security patches, minor content edits)</small></li>
+          <li><label><input type="checkbox" class="addon" data-price="499"> 🔒 SSL Certificate <span class="addons-price">₹499/year</span></label> <small>(Optional, free with most hosting plans)</small></li>
+        </ul>
+        <div class="total-price">Total Add-ons: ₹<span id="addons-total">0</span></div>
+      </form>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    // Toggle highlight between Basic and Premium
+    const toggleBasic = document.getElementById('toggle-basic');
+    const togglePremium = document.getElementById('toggle-premium');
+    const planBasic = document.getElementById('plan-basic');
+    const planPremium = document.getElementById('plan-premium');
+    toggleBasic.addEventListener('click', () => {
+      toggleBasic.classList.add('active');
+      togglePremium.classList.remove('active');
+      planBasic.style.boxShadow = '0 0 0 4px #007bff33';
+      planPremium.style.boxShadow = '';
+    });
+    togglePremium.addEventListener('click', () => {
+      togglePremium.classList.add('active');
+      toggleBasic.classList.remove('active');
+      planPremium.style.boxShadow = '0 0 0 4px #007bff33';
+      planBasic.style.boxShadow = '';
+    });
+    // Default highlight
+    planBasic.style.boxShadow = '0 0 0 4px #007bff33';
+
+    // Add-ons calculator
+    const addonsForm = document.getElementById('addons-form');
+    const addonsTotal = document.getElementById('addons-total');
+    addonsForm.addEventListener('change', () => {
+      let total = 0;
+      addonsForm.querySelectorAll('.addon:checked').forEach(cb => {
+        // For e-commerce add-on, use min price
+        if (cb.nextSibling && cb.nextSibling.textContent.includes('E-commerce')) {
+          total += 4999;
+        } else {
+          total += parseInt(cb.getAttribute('data-price'));
+        }
+      });
+      addonsTotal.textContent = total.toLocaleString();
+    });
+  </script>
+</body>
+</html> 

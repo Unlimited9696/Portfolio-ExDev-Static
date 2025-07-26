@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Us - EzFlow</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hire-page {
+            min-height: 100vh;
+            background: #1a1a1a;
+            padding-top: 100px;
+        }
+        
+        .hire-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hire-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .hire-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        
+        .hire-subtitle {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .hire-form-container {
+            background: #2a2a2a;
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid #333;
+            margin-bottom: 2rem;
+        }
+        
+        .form-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .form-section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #00d4aa;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #333;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section-icon {
+            font-size: 1.2rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-type-card {
+            position: relative;
+        }
+        
+        .project-type-card input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+        
+        .project-type-card label {
+            display: block;
+            padding: 1.5rem;
+            background: #333;
+            border: 2px solid #444;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #ffffff;
+        }
+        
+        .project-type-card input[type="radio"]:checked + label {
+            background: #00d4aa;
+            color: #1a1a1a;
+            border-color: #00d4aa;
+            transform: translateY(-2px);
+        }
+        
+        .project-type-card label:hover {
+            border-color: #00d4aa;
+            transform: translateY(-1px);
+        }
+        
+        .project-type-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .urgency-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .urgency-option {
+            position: relative;
+        }
+        
+        .urgency-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+        
+        .urgency-option label {
+            display: block;
+            padding: 1rem;
+            background: #333;
+            border: 2px solid #444;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #ffffff;
+            font-size: 0.9rem;
+        }
+        
+        .urgency-option input[type="radio"]:checked + label {
+            background: #00d4aa;
+            color: #1a1a1a;
+            border-color: #00d4aa;
+        }
+        
+        .urgency-option label:hover {
+            border-color: #00d4aa;
+        }
+        
+        .budget-slider-container {
+            margin-bottom: 1.5rem;
+        }
+        
+        .budget-display {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #00d4aa;
+            margin-bottom: 1rem;
+        }
+        
+        .budget-slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #333;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .budget-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #00d4aa;
+            cursor: pointer;
+        }
+        
+        .budget-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #00d4aa;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .budget-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #a0a0a0;
+            margin-top: 0.5rem;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skill-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #00d4aa;
+        }
+        
+        .skill-item label {
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #00d4aa;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: #00c49a;
+        }
+        
+        .hire-benefits {
+            background: #222;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .benefit-icon {
+            font-size: 1.5rem;
+            color: #00d4aa;
+            margin-top: 0.2rem;
+        }
+        
+        .benefit-content h4 {
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .benefit-content p {
+            color: #a0a0a0;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hire-title {
+                font-size: 2rem;
+            }
+            
+            .hire-form-container {
+                padding: 2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-type-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .urgency-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hire-page">
+        <div class="hire-container">
+            <a href="index.html" class="back-link">
+                ← Back to Home
+            </a>
+            
+            <div class="hire-header">
+                <h1 class="hire-title">Hire <span class="highlight">EzFlow</span></h1>
+                <p class="hire-subtitle">
+                    Ready to bring your digital vision to life? Tell us about your project and let's create something amazing together. Our team is excited to work with you!
+                </p>
+            </div>
+            
+            <div class="hire-benefits">
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <span class="benefit-icon">⚡</span>
+                        <div class="benefit-content">
+                            <h4>Fast Delivery</h4>
+                            <p>Quick turnaround times without compromising quality</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🎯</span>
+                        <div class="benefit-content">
+                            <h4>Tailored Solutions</h4>
+                            <p>Custom development that fits your specific needs</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🔧</span>
+                        <div class="benefit-content">
+                            <h4>Ongoing Support</h4>
+                            <p>Continuous maintenance and updates after launch</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">💡</span>
+                        <div class="benefit-content">
+                            <h4>Expert Guidance</h4>
+                            <p>Professional advice throughout the entire process</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hire-form-container">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="d34dce40-3a19-407b-a463-cc27ae06e370" />
+                    <input type="hidden" name="subject" value="New Hire Request from EzFlow" />
+                    <input type="hidden" name="from_name" value="EzFlow Hire Form" />
+                    
+                    <!-- Contact Information -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">
+                            <span class="section-icon">👤</span>
+                            Contact Information
+                        </h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="hire-name">Full Name *</label>
+                                <input type="text" id="hire-name" name="name" placeholder="Your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="hire-email">Email Address *</label>
+                                <input type="email" id="hire-email" name="email" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="hire-phone">Phone Number</label>
+                                <input type="tel" id="hire-phone" name="phone" placeholder="+1 (234) 567-8900">
+                            </div>
+                            <div class="form-group">
+                                <label for="hire-company">Company/Organization</label>
+                                <input type="text" id="hire-company" name="company" placeholder="Your company name">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Type -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">
+                            <span class="section-icon">🚀</span>
+                            What Type of Project Do You Need?
+                        </h3>
+                        <div class="project-type-grid">
+                            <div class="project-type-card">
+                                <input type="radio" id="website" name="project_type" value="Website Development">
+                                <label for="website">
+                                    <span class="project-type-icon">🌐</span>
+                                    <strong>Website</strong><br>
+                                    <small>Business, Portfolio, Blog</small>
+                                </label>
+                            </div>
+                            <div class="project-type-card">
+                                <input type="radio" id="ecommerce" name="project_type" value="E-commerce Store">
+                                <label for="ecommerce">
+                                    <span class="project-type-icon">🛒</span>
+                                    <strong>E-commerce</strong><br>
+                                    <small>Online Store, Shopping Cart</small>
+                                </label>
+                            </div>
+                            <div class="project-type-card">
+                                <input type="radio" id="webapp" name="project_type" value="Web Application">
+                                <label for="webapp">
+                                    <span class="project-type-icon">⚙️</span>
+                                    <strong>Web App</strong><br>
+                                    <small>Custom Application, Dashboard</small>
+                                </label>
+                            </div>
+                            <div class="project-type-card">
+                                <input type="radio" id="mobile" name="project_type" value="Mobile App">
+                                <label for="mobile">
+                                    <span class="project-type-icon">📱</span>
+                                    <strong>Mobile App</strong><br>
+                                    <small>iOS, Android, Cross-platform</small>
+                                </label>
+                            </div>
+                            <div class="project-type-card">
+                                <input type="radio" id="redesign" name="project_type" value="Website Redesign">
+                                <label for="redesign">
+                                    <span class="project-type-icon">🎨</span>
+                                    <strong>Redesign</strong><br>
+                                    <small>Modernize Existing Site</small>
+                                </label>
+                            </div>
+                            <div class="project-type-card">
+                                <input type="radio" id="other" name="project_type" value="Other">
+                                <label for="other">
+                                    <span class="project-type-icon">💡</span>
+                                    <strong>Other</strong><br>
+                                    <small>Custom Solution</small>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Details -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">
+                            <span class="section-icon">📋</span>
+                            Project Details
+                        </h3>
+                        <div class="form-group">
+                            <label for="project-name">Project Name *</label>
+                            <input type="text" id="project-name" name="project_name" placeholder="What should we call your project?" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-description">Project Description *</label>
+                            <textarea id="project-description" name="project_description" rows="4" placeholder="Describe your project, goals, target audience, and any specific requirements..." required></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="current-website">Current Website (if any)</label>
+                                <input type="url" id="current-website" name="current_website" placeholder="https://yourwebsite.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="inspiration">Inspiration/Reference Sites</label>
+                                <input type="text" id="inspiration" name="inspiration" placeholder="Sites you like or want to emulate">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Budget -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">
+                            <span class="section-icon">💰</span>
+                            Project Budget
+                        </h3>
+                        <div class="budget-slider-container">
+                            <div class="budget-display" id="budget-display">$5,000</div>
+                            <input type="range" class="budget-slider" id="budget-slider" name="budget" min="1000" max="50000" value="5000" step="500">
+                            <div class="budget-labels">
+                                <span>$1,000</span>
+                                <span>$50,000+</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">
+                            <span class="section-icon">⏰</span>
+                            Project Timeline
+                        </h3>
+                        <div class="urgency-options">
+                            <div class="urgency-option">
+                                <input type="radio" id="urgent" name="timeline" value="ASAP (Rush Job)">
+                                <label for="urgent">ASAP<br><small>(Rush Job)</small></label>
+                            </div>
+                            <div class="urgency-option">
+                                <input type="radio" id="week" name="timeline" value="1 Week">
+                                <label for="week">1 Week</label>
+                            </div>
+                            <div class="urgency-option">
+                                <input type="radio" id="month" name="timeline" value="1 Month">
+                                <label for="month">1 Month</label>
+                            </div>
+                            <div class="urgency-option">
+                                <input type="radio" id="quarter" name="timeline" value="3 Months">
+                                <label for="quarter">3 Months</label>
+                            </div>
+                            <div class="urgency-option">
+                                <input type="radio" id="flexible" name="timeline" value="Flexible">
+                                <label for="flexible">Flexible</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Required Skills -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">
+                            <span class="section-icon">🛠️</span>
+                            Required Technologies/Skills
+                        </h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <input type="checkbox" id="html-css" name="skills[]" value="HTML/CSS">
+                                <label for="html-css">HTML/CSS</label>
+                            </div>
+                            <div class="skill-item">
+                                <input type="checkbox" id="javascript" name="skills[]" value="JavaScript">
+                                <label for="javascript">JavaScript</label>
+                            </div>
+                            <div class="skill-item">
+                                <input type="checkbox" id="react" name="skills[]" value="React">
+                                <label for="react">React</label>
+                            </div>
+                            <div class="skill-item">
+                                <input type="checkbox" id="nodejs" name="skills[]" value="Node.js">
+                                <label for="nodejs">Node.js</label>
+                            </div>
+                            <div class="skill-item">
+                                <input type="checkbox" id="php" name="skills[]" value="PHP">
+                                <label for="php">PHP</label>
+                            </div>
+                            <div class="skill-item">
+                                <input type="checkbox" id="python" name="skills[]" value="Python">
+                                <label for="python">Python</label>
+                            </div>
+                            <div class="skill-item">
+                                <input type="checkbox" id="wordpress" name="skills[]" value="WordPress">
+                                <label for="wordpress">WordPress</label>
+                            </div>
+                            <div class="skill-item">
+                                <input type="checkbox" id="database" name="skills[]" value="Database">
+                                <label for="database">Database</label>
+                            </div>
+                            <div class="skill-item">
+                                <input type="checkbox" id="api" name="skills[]" value="API Integration">
+                                <label for="api">API Integration</label>
+                            </div>
+                            <div class="skill-item">
+                                <input type="checkbox" id="seo" name="skills[]" value="SEO">
+                                <label for="seo">SEO</label>
+                            </div>
+                            <div class="skill-item">
+                                <input type="checkbox" id="hosting" name="skills[]" value="Hosting/Deployment">
+                                <label for="hosting">Hosting/Deployment</label>
+                            </div>
+                            <div class="skill-item">
+                                <input type="checkbox" id="maintenance" name="skills[]" value="Maintenance">
+                                <label for="maintenance">Maintenance</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Information -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">
+                            <span class="section-icon">📝</span>
+                            Additional Information
+                        </h3>
+                        <div class="form-group">
+                            <label for="additional-requirements">Special Requirements or Questions</label>
+                            <textarea id="additional-requirements" name="additional_requirements" rows="3" placeholder="Any specific features, integrations, or questions you have..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="how-found">How did you find us?</label>
+                            <input type="text" id="how-found" name="how_found" placeholder="Google, referral, social media, etc.">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem; font-size: 1.1rem; padding: 1.2rem;">
+                        🚀 Hire EzFlow - Let's Get Started!
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Budget slider functionality
+        const budgetSlider = document.getElementById('budget-slider');
+        const budgetDisplay = document.getElementById('budget-display');
+        
+        function updateBudgetDisplay(value) {
+            const budget = parseInt(value);
+            if (budget >= 50000) {
+                budgetDisplay.textContent = '$50,000+';
+            } else {
+                budgetDisplay.textContent = '$' + budget.toLocaleString();
+            }
+        }
+        
+        budgetSlider.addEventListener('input', function() {
+            updateBudgetDisplay(this.value);
+        });
+        
+        // Form submission handling
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            
+            submitButton.innerHTML = '⏳ Sending Your Hire Request...';
+            submitButton.disabled = true;
+            
+            // Re-enable button after form submission attempt
+            setTimeout(() => {
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            }, 3000);
+        });
+        
+        // Add smooth animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const formSections = document.querySelectorAll('.form-section');
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            formSections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+            
+            // Add hover effects to project type cards
+            const projectCards = document.querySelectorAll('.project-type-card label');
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    if (!this.previousElementSibling.checked) {
+                        this.style.transform = 'translateY(-3px)';
+                        this.style.boxShadow = '0 8px 25px rgba(0, 212, 170, 0.2)';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    if (!this.previousElementSibling.checked) {
+                        this.style.transform = 'translateY(0)';
+                        this.style.boxShadow = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

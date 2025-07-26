@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get a Custom Quote - EzFlow</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .quote-page {
+            min-height: 100vh;
+            background: #1a1a1a;
+            padding-top: 100px;
+        }
+        
+        .quote-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .quote-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .quote-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        
+        .quote-subtitle {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .quote-form-container {
+            background: #2a2a2a;
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid #333;
+            margin-bottom: 2rem;
+        }
+        
+        .form-section {
+            margin-bottom: 2rem;
+        }
+        
+        .form-section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #00d4aa;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #333;
+            padding-bottom: 0.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #00d4aa;
+        }
+        
+        .checkbox-item label {
+            color: #ffffff;
+            cursor: pointer;
+        }
+        
+        .budget-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .budget-option {
+            position: relative;
+        }
+        
+        .budget-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+        
+        .budget-option label {
+            display: block;
+            padding: 1rem;
+            background: #333;
+            border: 2px solid #444;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #ffffff;
+        }
+        
+        .budget-option input[type="radio"]:checked + label {
+            background: #00d4aa;
+            color: #1a1a1a;
+            border-color: #00d4aa;
+        }
+        
+        .budget-option label:hover {
+            border-color: #00d4aa;
+        }
+        
+        .timeline-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-option {
+            position: relative;
+        }
+        
+        .timeline-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+        
+        .timeline-option label {
+            display: block;
+            padding: 0.8rem;
+            background: #333;
+            border: 2px solid #444;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #ffffff;
+            font-size: 0.9rem;
+        }
+        
+        .timeline-option input[type="radio"]:checked + label {
+            background: #00d4aa;
+            color: #1a1a1a;
+            border-color: #00d4aa;
+        }
+        
+        .timeline-option label:hover {
+            border-color: #00d4aa;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #00d4aa;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: #00c49a;
+        }
+        
+        @media (max-width: 768px) {
+            .quote-title {
+                font-size: 2rem;
+            }
+            
+            .quote-form-container {
+                padding: 2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .budget-options,
+            .timeline-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quote-page">
+        <div class="quote-container">
+            <a href="index.html" class="back-link">
+                ← Back to Home
+            </a>
+            
+            <div class="quote-header">
+                <h1 class="quote-title">Get a Custom <span class="highlight">Quote</span></h1>
+                <p class="quote-subtitle">
+                    Tell us about your project and we'll provide you with a detailed quote tailored to your specific needs.
+                </p>
+            </div>
+            
+            <div class="quote-form-container">
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="d34dce40-3a19-407b-a463-cc27ae06e370" />
+                    <input type="hidden" name="subject" value="Custom Quote Request from ExDev" />
+                    <input type="hidden" name="from_name" value="ExDev Quote Form" />
+                    
+                    <!-- Contact Information -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">Contact Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="quote-name">Full Name *</label>
+                                <input type="text" id="quote-name" name="name" placeholder="Your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="quote-email">Email *</label>
+                                <input type="email" id="quote-email" name="email" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="quote-phone">Phone</label>
+                                <input type="tel" id="quote-phone" name="phone" placeholder="+1 (234) 567-8900">
+                            </div>
+                            <div class="form-group">
+                                <label for="quote-company">Company</label>
+                                <input type="text" id="quote-company" name="company" placeholder="Your company name">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Details -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">Project Details</h3>
+                        <div class="form-group">
+                            <label for="project-title">Project Title *</label>
+                            <input type="text" id="project-title" name="project_title" placeholder="What's your project called?" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="project-description">Project Description *</label>
+                            <textarea id="project-description" name="project_description" rows="4" placeholder="Describe your project in detail..." required></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Services Needed -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">Services Needed</h3>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="web-design" name="services[]" value="Web Design">
+                                <label for="web-design">Web Design</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="web-development" name="services[]" value="Web Development">
+                                <label for="web-development">Web Development</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="ecommerce" name="services[]" value="E-commerce">
+                                <label for="ecommerce">E-commerce</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="mobile-app" name="services[]" value="Mobile App">
+                                <label for="mobile-app">Mobile App</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="cms" name="services[]" value="CMS Development">
+                                <label for="cms">CMS Development</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="api" name="services[]" value="API Development">
+                                <label for="api">API Development</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="maintenance" name="services[]" value="Maintenance & Support">
+                                <label for="maintenance">Maintenance & Support</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="other-service" name="services[]" value="Other">
+                                <label for="other-service">Other</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Budget Range -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">Budget Range</h3>
+                        <div class="budget-options">
+                            <div class="budget-option">
+                                <input type="radio" id="budget-1" name="budget" value="Under ₹50,000">
+                                <label for="budget-1">Under ₹50,000</label>
+                            </div>
+                            <div class="budget-option">
+                                <input type="radio" id="budget-2" name="budget" value="₹50,000 - ₹1,00,000">
+                                <label for="budget-2">₹50,000 - ₹1,00,000</label>
+                            </div>
+                            <div class="budget-option">
+                                <input type="radio" id="budget-3" name="budget" value="₹1,00,000 - ₹2,50,000">
+                                <label for="budget-3">₹1,00,000 - ₹2,50,000</label>
+                            </div>
+                            <div class="budget-option">
+                                <input type="radio" id="budget-4" name="budget" value="₹2,50,000 - ₹5,00,000">
+                                <label for="budget-4">₹2,50,000 - ₹5,00,000</label>
+                            </div>
+                            <div class="budget-option">
+                                <input type="radio" id="budget-5" name="budget" value="₹5,00,000+">
+                                <label for="budget-5">₹5,00,000+</label>
+                            </div>
+                            <div class="budget-option">
+                                <input type="radio" id="budget-discuss" name="budget" value="Let's discuss">
+                                <label for="budget-discuss">Let's discuss</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">Project Timeline</h3>
+                        <div class="timeline-options">
+                            <div class="timeline-option">
+                                <input type="radio" id="timeline-asap" name="timeline" value="ASAP">
+                                <label for="timeline-asap">ASAP</label>
+                            </div>
+                            <div class="timeline-option">
+                                <input type="radio" id="timeline-1month" name="timeline" value="1 Month">
+                                <label for="timeline-1month">1 Month</label>
+                            </div>
+                            <div class="timeline-option">
+                                <input type="radio" id="timeline-3months" name="timeline" value="3 Months">
+                                <label for="timeline-3months">3 Months</label>
+                            </div>
+                            <div class="timeline-option">
+                                <input type="radio" id="timeline-6months" name="timeline" value="6 Months">
+                                <label for="timeline-6months">6 Months</label>
+                            </div>
+                            <div class="timeline-option">
+                                <input type="radio" id="timeline-flexible" name="timeline" value="Flexible">
+                                <label for="timeline-flexible">Flexible</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Information -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">Additional Information</h3>
+                        <div class="form-group">
+                            <label for="additional-info">Anything else you'd like us to know?</label>
+                            <textarea id="additional-info" name="additional_info" rows="3" placeholder="Any specific requirements, preferences, or questions..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                        Get My Custom Quote
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Form submission handling
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            
+            submitButton.textContent = 'Sending Quote Request...';
+            submitButton.disabled = true;
+            
+            // Re-enable button after form submission attempt
+            setTimeout(() => {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }, 3000);
+        });
+        
+        // Add smooth animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const formSections = document.querySelectorAll('.form-section');
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            formSections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
